@@ -20,10 +20,17 @@ function App() {
   }, []);
 
   console.log(listings);
+  const handleRemoveListing = (deletedListing) => {
+    setListings(listings.filter((listing) => listing.id != deletedListing.id));
+  };
+
   return (
     <div className="app">
       <Header />
-      <ListingsContainer listings={listings} />
+      <ListingsContainer
+        listings={listings}
+        onRemoveListing={handleRemoveListing}
+      />
     </div>
   );
 }
