@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 
 function ListingCard({ listing, onRemoveListing }) {
-  const { description, image, location } = listing;
+  const { description, image, location, id } = listing;
   const [isFavorite, setIsFavorite] = useState(false);
   const handleClick = () => {
     setIsFavorite((isFavorite) => !isFavorite);
   };
   const handleDelete = () => {
-    onRemoveListing(listing);
+    fetch(`http://localhost:6001/listings/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/JSON",
+      },
+    }).then(() => onRemoveListing(listing));
   };
   return (
     <li className="card">

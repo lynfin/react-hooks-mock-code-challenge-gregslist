@@ -21,7 +21,7 @@ function App() {
 
   console.log(listings);
   const handleRemoveListing = (deletedListing) => {
-    setListings(listings.filter((listing) => listing.id != deletedListing.id));
+    setListings(listings.filter((listing) => listing.id !== deletedListing.id));
   };
 
   return (
